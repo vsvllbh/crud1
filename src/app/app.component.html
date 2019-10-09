@@ -1,13 +1,36 @@
-
-<ul>
-  <!--Read Firebase Data-->
-  <li *ngFor="let todo of todo$ | async">
-    {{ todo.description }}
-    {{ todo.completed }}
-  </li>
-</ul>
-<!--
-<div >
-  {{addTodo("Added new Description")}}
-</div>
--->
+<!--TODO APP HTML-->
+<!--Here I have used only material design in this HTML-->
+<mat-card class="background-card">
+  <mat-card class="heading-card">
+    <mat-card-title>TODO APP</mat-card-title>
+  </mat-card>
+  <mat-card class="create-card">
+    <mat-card-actions> Create TODO</mat-card-actions>
+    <mat-divider></mat-divider>
+    <form (ngSubmit)="onSubmit()" class="example-form">
+      <div class="form-group">
+        <mat-slide-toggle  [(ngModel)]="isChecked" name="itemToggle">
+          If Completed Slide!
+        </mat-slide-toggle>
+        <mat-form-field class="example-full-width">
+          <input [(ngModel)]="description" class="form-control" id="item"
+                 matInput name="Description"
+                 placeholder="Enter description..." required type="text">
+        </mat-form-field>
+      </div>
+      <button class="btn btn-success" color="primary" mat-raised-button type="submit">Submit</button>
+    </form>
+  </mat-card>
+  <mat-card>
+    <mat-card-actions> View TODO</mat-card-actions>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <!--Read Firebase Data-->
+      <mat-nav-list  *ngFor="let todo of (todo$ | async) let i = index;" >
+        <mat-slide-toggle (click)="onUpdate()" [checked]= "todo.completed" >
+          {{i + 1}} {{ todo.description }}
+        </mat-slide-toggle >
+      </mat-nav-list>
+    </mat-card-content>
+  </mat-card>
+</mat-card>

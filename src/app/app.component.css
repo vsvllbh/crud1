@@ -1,0 +1,25 @@
+.background-card{
+  padding: auto;
+  margin-right: auto;
+}
+
+.heading-card{
+  background-color: blueviolet;
+  color: white;
+}
+.create-card{
+
+}
+.example-form {
+  min-width: 250px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.myViewList{
+  font-size: 24px;
+  color: green;
+}
